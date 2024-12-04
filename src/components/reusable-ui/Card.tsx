@@ -1,69 +1,89 @@
-import styled, { css } from "styled-components"
-import { theme } from "../../theme"
-import Button from "./Button"
-import { TiDelete } from "react-icons/ti"
-import { fadeInFromRight, fadeInFromTop } from "../../theme/animations"
+import styled, { css } from "styled-components";
+import { theme } from "../../theme";
+import Button from "./Button";
+import { TiDelete } from "react-icons/ti";
+import { fadeInFromRight, fadeInFromTop } from "../../theme/animations";
 
-export default function Card({
-  title,
-  imageSource,
-  leftDescription,
-  hasDeleteButton,
-  onDelete,
-  onClick,
-  isHoverable,
-  isSelected,
-  onAdd,
-  overlapImageSource,
-  isOverlapImageVisible,
-}) {
-  // state (vide)
-
-  // comportements (vide)
-
-  // affichage
-  return (
-    <CardStyled
-      className="produit"
-      onClick={onClick}
-      isHoverable={isHoverable}
-      isSelected={isSelected}
-    >
-      <div className="card">
-        {hasDeleteButton && (
-          <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
-            <TiDelete className="icon" />
-          </button>
-        )}
-
-        <div className="image">
-          {isOverlapImageVisible && (
-            <div className="overlap">
-              <div className="transparent-layer"></div>
-              <img className="overlap-image" src={overlapImageSource} alt="overlap" />
-            </div>
-          )}
-          <img className="product" src={imageSource} alt={title} />
-        </div>
-
-        <div className="text-info">
-          <div className="title">{title}</div>
-          <div className="description">
-            <div className="left-description">{leftDescription}</div>
-            <div className="right-description">
-              <Button
-                className="primary-button"
-                label={"Ajouter"}
-                onClick={onAdd}
-                disabled={isOverlapImageVisible}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </CardStyled>
-  )
+interface CardProps {
+	title: string;
+	imageSource: string;
+	leftDescription: string;
+	hasDeleteButton: boolean;
+	onDelete?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+	onClick: () => void;
+	isHoverable: boolean;
+	isSelected: boolean;
+	onAdd?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+	overlapImageSource: string;
+	isOverlapImageVisible: boolean;
 }
+
+const Card = ({
+	title,
+	imageSource,
+	leftDescription,
+	hasDeleteButton,
+	onDelete,
+	onClick,
+	isHoverable,
+	isSelected,
+	onAdd,
+	overlapImageSource,
+	isOverlapImageVisible,
+}: CardProps) => {
+	return (
+		<CardStyled
+			className="produit"
+			onClick={onClick}
+			isHoverable={isHoverable}
+			isSelected={isSelected}
+		>
+			<div className="card">
+				{hasDeleteButton && (
+					<button
+						type="button"
+						className="delete-button"
+						aria-label="delete-button"
+						onClick={onDelete}
+					>
+						<TiDelete className="icon" />
+					</button>
+				)}
+
+				<div className="image">
+					{isOverlapImageVisible && (
+						<div className="overlap">
+							<div className="transparent-layer" />
+							<img
+								className="overlap-image"
+								src={overlapImageSource}
+								alt="overlap"
+							/>
+						</div>
+					)}
+					<img className="product" src={imageSource} alt={title} />
+				</div>
+
+				<div className="text-info">
+					<div className="title">{title}</div>
+					<div className="description">
+						<div className="left-description">{leftDescription}</div>
+						<div className="right-description">
+							<Button
+								className="primary-button"
+								label={"Ajouter"}
+								onClick={onAdd}
+								disabled={isOverlapImageVisible}
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</CardStyled>
+	);
+};
+
+export default Card;
 
 const CardStyled = styled.div`
   ${({ isHoverable }) => isHoverable && hoverableStyle}
@@ -202,16 +222,22 @@ const CardStyled = styled.div`
       }
     }
 
-    ${({ isHoverable, isSelected }) => isHoverable && isSelected && selectedStyle}
+    ${({
+			isHoverable,
+			isSelected,
+		}: {
+			isHoverable: boolean;
+			isSelected: boolean;
+		}) => isHoverable && isSelected && selectedStyle}
   }
-`
+`;
 
 const hoverableStyle = css`
   :hover {
     box-shadow: ${theme.shadows.orangeHighlight};
     cursor: pointer;
   }
-`
+`;
 
 const selectedStyle = css`
   background: ${theme.colors.primary};
@@ -268,4 +294,4 @@ const selectedStyle = css`
       }
     }
   }
-`
+`;
