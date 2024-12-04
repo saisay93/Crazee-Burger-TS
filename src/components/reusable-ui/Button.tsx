@@ -1,18 +1,48 @@
-import styled, { css } from "styled-components"
-import { theme } from "../../theme"
+import styled, { css } from "styled-components";
+import { theme } from "../../theme";
+import { H } from "vite/dist/node/types.d-aGj9QkWt";
 
-export default function Button({ label, Icon, className, version = "normal", onClick, disabled }) {
-  return (
-    <ButtonStyled className={className} version={version} onClick={onClick} disabled={disabled}>
-      <span>{label}</span>
-      <div className="icon">{Icon && Icon}</div>
-    </ButtonStyled>
-  )
+type VersionType = keyof typeof extraStyle; // Typage dynamique (bonne pratique ?) basé sur les clés de `extraStyle`
+
+ export interface ButtonProps {
+	label: string;
+	Icon?: JSX.Element;
+	className: string;
+	version?: VersionType;
+	onClick?: (event : React.MouseEvent<HTMLButtonElement, MouseEvent>)=> void;
+	disabled?: boolean;
 }
 
-const ButtonStyled = styled.button`
+const Button = ({
+	label,
+	Icon,
+	className,
+	version = "normal",
+	onClick,
+	disabled,
+}:ButtonProps) => {
+	return (
+		<ButtonStyled
+			className={className}
+			version={version}
+			onClick={onClick}
+			disabled={disabled}
+		>
+			<span>{label}</span>
+			<div className="icon">{Icon && Icon}</div>
+		</ButtonStyled>
+	);
+};
+
+export default Button;
+
+interface StyledProps {
+	version: VersionType;
+}
+
+const ButtonStyled = styled.button<StyledProps>`
   ${({ version }) => extraStyle[version]};
-`
+`;
 
 const extraStyleNormal = css`
   width: 100%;
@@ -71,7 +101,7 @@ const extraStyleNormal = css`
     justify-content: center;
     align-items: center;
   }
-`
+`;
 
 const extraStyleSuccess = css`
   cursor: pointer;
@@ -92,8 +122,8 @@ const extraStyleSuccess = css`
     background: ${theme.colors.success};
     border: 1px solid ${theme.colors.success};
   }
-`
+`;
 const extraStyle = {
-  normal: extraStyleNormal,
-  success: extraStyleSuccess,
-}
+	normal: extraStyleNormal,
+	success: extraStyleSuccess,
+};
