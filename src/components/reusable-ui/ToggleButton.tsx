@@ -1,31 +1,40 @@
-import React from "react"
-import styled from "styled-components"
-import { theme } from "../../theme"
+import React from "react";
+import styled from "styled-components";
+import { theme } from "../../theme";
 
-export default function ToggleButton({
-  isChecked,
-  onToggle,
-  labelIfChecked = "Fermer",
-  labelIfUnchecked = "Ouvrir",
-}) {
-  return (
-    <ToggleButtonStyled>
-      <input
-        type="checkbox"
-        className="toggle"
-        id="rounded"
-        checked={isChecked}
-        onChange={onToggle}
-      />
-      <label
-        htmlFor="rounded"
-        className="rounded"
-        data-checked={labelIfChecked}
-        data-unchecked={labelIfUnchecked}
-      ></label>
-    </ToggleButtonStyled>
-  )
+interface ToggleButtonProps {
+	isChecked: boolean;
+	onToggle: () => void;
+	labelIfChecked?: string;
+	labelIfUnchecked?: string;
 }
+
+const ToggleButton = ({
+	isChecked,
+	onToggle,
+	labelIfChecked = "Fermer",
+	labelIfUnchecked = "Ouvrir",
+}: ToggleButtonProps) => {
+	return (
+		<ToggleButtonStyled>
+			<input
+				type="checkbox"
+				className="toggle"
+				id="rounded"
+				checked={isChecked}
+				onChange={onToggle}
+			/>
+			<label
+				htmlFor="rounded"
+				className="rounded"
+				data-checked={labelIfChecked}
+				data-unchecked={labelIfUnchecked}
+			/>
+		</ToggleButtonStyled>
+	);
+};
+
+export default ToggleButton;
 
 const ToggleButtonStyled = styled.div`
   /* border: 1px solid red; */
@@ -131,4 +140,4 @@ const ToggleButtonStyled = styled.div`
       background-color: ${theme.colors.primary};
     }
   }
-`
+`;
