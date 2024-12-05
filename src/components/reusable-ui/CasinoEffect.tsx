@@ -2,18 +2,19 @@ import React from "react";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import styled from "styled-components";
 
-interface CasinoEffectProps {
+type CasinoEffectProps = {
 	count: string;
-}
+	className: string;
+};
 
-const CasinoEffect = ({ count }: CasinoEffectProps) => {
+const CasinoEffect = ({ count, className }: CasinoEffectProps) => {
 	return (
 		<TransitionGroup
 			component={CasinoEffectStyled}
 			className="transition-group"
 		>
 			<CSSTransition classNames="count-animated" timeout={300} key={count}>
-				<span>{count}</span>
+				<span className={className}>{count}</span>
 			</CSSTransition>
 		</TransitionGroup>
 	);
