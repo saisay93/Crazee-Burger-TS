@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-interface RibbonProps {
+type RibbonProps = {
 	label?: string;
-	className: string;
+	className?: string;
 }
 
 const Ribbon = ({ label = "new", className }: RibbonProps) => {
