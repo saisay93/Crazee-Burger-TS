@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { theme } from "../../theme";
 
 type StickerProps = {
-	label: string;
+	label?: string;
 	className?: string;
 }
 
