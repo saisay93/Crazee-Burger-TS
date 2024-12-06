@@ -1,9 +1,8 @@
-import React, {ReactNode} from "react";
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-interface HeaderProps{
-  children: ReactNode;
+type HeaderProps = {
+  children: React.ReactNode;
 }
 
 const Header = ({ children }: HeaderProps) => {
