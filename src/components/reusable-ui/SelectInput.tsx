@@ -1,21 +1,17 @@
-import React from "react";
+import React, { ComponentProps } from "react";
 import styled from "styled-components";
 import { theme } from "../../theme";
 
 
-interface Option {
-  optionValue: string; 
+type Option = {
+  optionValue?: string | number | readonly string[]; 
   label: string; 
 }
 
-interface SelectInputProps {
+type SelectInputProps = {
   options: Option[]; 
-  value: string; 
-  name: string; 
-  Icon?: React.ReactNode; 
-  className?: string; 
-  onChange?: React.ChangeEventHandler<HTMLSelectElement>; 
-}
+  Icon: JSX.Element; 
+} & ComponentProps<"select">
 
 const SelectInput = ({
   options,
