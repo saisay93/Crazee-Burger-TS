@@ -2,7 +2,7 @@ import React, { ComponentPropsWithRef } from "react";
 import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 
-type TextInputVersion = "normal" | "minimaliste";
+type TextInputVersion = "normal" | "minimalist";
 
 type TextInputProps = {
 	Icon: JSX.Element;

@@ -1,17 +1,14 @@
 import styled, { css } from "styled-components";
 import { theme } from "../../theme";
-import { H } from "vite/dist/node/types.d-aGj9QkWt";
+import { ComponentProps } from "react";
 
-type VersionType = keyof typeof extraStyle; // Typage dynamique (bonne pratique ?) basé sur les clés de `extraStyle`
+type ButtonVersion = "normal" | "success";
 
- export interface ButtonProps {
+type ButtonProps = {
 	label: string;
-	Icon?: JSX.Element;
-	className: string;
-	version?: VersionType;
-	onClick?: (event : React.MouseEvent<HTMLButtonElement, MouseEvent>)=> void;
-	disabled?: boolean;
-}
+	Icon: JSX.Element;
+	version?: ButtonVersion;
+} & ComponentProps<"button">;
 
 const Button = ({
 	label,
@@ -20,7 +17,7 @@ const Button = ({
 	version = "normal",
 	onClick,
 	disabled,
-}:ButtonProps) => {
+}: ButtonProps) => {
 	return (
 		<ButtonStyled
 			className={className}
@@ -36,11 +33,11 @@ const Button = ({
 
 export default Button;
 
-interface StyledProps {
-	version: VersionType;
+interface ButtonStyledProps {
+	version: ButtonVersion;
 }
 
-const ButtonStyled = styled.button<StyledProps>`
+const ButtonStyled = styled.button<ButtonStyledProps>`
   ${({ version }) => extraStyle[version]};
 `;
 
