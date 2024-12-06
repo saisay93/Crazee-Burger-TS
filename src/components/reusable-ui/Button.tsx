@@ -6,7 +6,7 @@ type ButtonVersion = "normal" | "success";
 
 type ButtonProps = {
 	label: string;
-	Icon: JSX.Element;
+	Icon?: JSX.Element;
 	version?: ButtonVersion;
 } & ComponentProps<"button">;
 
