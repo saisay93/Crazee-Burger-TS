@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-interface TabProps {
+type TabProps = {
 	label: string;
-	Icon: JSX.Element; // (Quid de React.ElementType et React.ComponentType ?)
-	onClick: ()=> void;
-	className: string;
-}
+	Icon?: JSX.Element;
+	onClick?: React.MouseEventHandler<HTMLButtonElement>;
+	className?: string;
+};
 
 const Tab = ({ label, Icon, onClick, className }: TabProps) => {
 	return (
