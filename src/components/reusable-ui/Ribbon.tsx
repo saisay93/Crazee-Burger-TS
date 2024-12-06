@@ -1,15 +1,22 @@
-import styled from "styled-components"
-import { theme } from "../../theme"
+import styled from "styled-components";
+import { theme } from "../../theme";
 
-export default function Ribbon({ label = "new", className }) {
-  return (
-    <RibbonStyled className={className}>
-      <div className="ribbon ribbon-top-left">
-        <span>{label}</span>
-      </div>
-    </RibbonStyled>
-  )
+type RibbonProps = {
+	label?: string;
+	className?: string;
 }
+
+const Ribbon = ({ label = "new", className }: RibbonProps) => {
+	return (
+		<RibbonStyled className={className}>
+			<div className="ribbon ribbon-top-left">
+				<span>{label}</span>
+			</div>
+		</RibbonStyled>
+	);
+};
+
+export default Ribbon;
 
 const RibbonStyled = styled.div`
   body {
@@ -152,4 +159,4 @@ const RibbonStyled = styled.div`
     bottom: 30px;
     transform: rotate(-225deg);
   }
-`
+`;
