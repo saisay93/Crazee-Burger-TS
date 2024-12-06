@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-interface StickerProps {
-	label?: string;
-	className: string;
+type StickerProps = {
+	label: string;
+	className?: string;
 }
 
 const Sticker = ({ label = "new", className }: StickerProps) => {
