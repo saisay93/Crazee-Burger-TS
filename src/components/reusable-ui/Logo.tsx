@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-interface LogoProps {
-	className: string;
-	onClick?: () => void;
+type LogoProps = {
+	className?: string;
+	onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 
 const Logo = ({ className, onClick }: LogoProps) => {
