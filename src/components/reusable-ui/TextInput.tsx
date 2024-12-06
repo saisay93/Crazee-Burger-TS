@@ -1,14 +1,13 @@
-import React from "react";
+import React, { ComponentPropsWithRef } from "react";
 import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 
-type VersionType = keyof typeof extraStyle;
+type TextInputVersion = "normal" | "minimaliste";
 
-interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-	onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-	Icon?: JSX.Element; // (Quid de React.ElementType et React.ComponentType ?)
-	version?: VersionType; 
-}
+type TextInputProps = {
+	Icon: JSX.Element;
+	version?: TextInputVersion;
+} & ComponentPropsWithRef<"input">
 
 const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
 	({ onChange, Icon, className, version = "normal", ...extraProps }, ref) => {
@@ -23,11 +22,11 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
 
 export default TextInput;
 
-interface StyledProps {
-	version: VersionType;
-}
+type TextInputStyledProps = {
+	version: TextInputVersion;
+};
 
-const TextInputStyled = styled.div<StyledProps>`
+const TextInputStyled = styled.div<TextInputStyledProps>`
   border-radius: ${theme.borderRadius.round};
   display: flex;
   align-items: center;

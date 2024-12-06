@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 type CasinoEffectProps = {
 	count: string;
-	className: string;
+	className?: string;
 };
 
 const CasinoEffect = ({ count, className }: CasinoEffectProps) => {
