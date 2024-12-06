@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { theme } from "../../theme";
+import { theme } from "../../theme/theme";
 
 type RibbonProps = {
 	label?: string;
 	className?: string;
-}
+};
 
 const Ribbon = ({ label = "new", className }: RibbonProps) => {
 	return (

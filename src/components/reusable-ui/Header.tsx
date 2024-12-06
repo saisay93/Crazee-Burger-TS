@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { theme } from "../../theme";
+import { theme } from "../../theme/theme";
 
 type HeaderProps = {
-  children: React.ReactNode;
-}
+	children: React.ReactNode;
+};
 
 const Header = ({ children }: HeaderProps) => {
 	return <HeaderStyled>{children}</HeaderStyled>;
