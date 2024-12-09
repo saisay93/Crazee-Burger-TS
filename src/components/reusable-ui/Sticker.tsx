@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { theme } from "../../theme";
+import { theme } from "../../theme/theme";
 
 type StickerProps = {
 	label?: string;
 	className?: string;
-}
+};
 
 const Sticker = ({ label = "new", className }: StickerProps) => {
 	return <StickerStyled className={className}>{label}</StickerStyled>;

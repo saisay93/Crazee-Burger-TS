@@ -1,44 +1,49 @@
-import React from "react"
-import styled, { css } from "styled-components"
-import { MdDeleteForever } from "react-icons/md"
-import { theme } from "../../../../../../theme"
-import CasinoEffect from "../../../../../reusable-ui/CasinoEffect"
-import Sticker from "../../../../../reusable-ui/Sticker"
+import React from "react";
+import styled, { css } from "styled-components";
+import { MdDeleteForever } from "react-icons/md";
+import { theme } from "../../../../../../theme/theme";
+import CasinoEffect from "../../../../../reusable-ui/CasinoEffect";
+import Sticker from "../../../../../reusable-ui/Sticker";
 
 export default function BasketCard({
-  title,
-  price,
-  quantity,
-  imageSource,
-  className,
-  isClickable,
-  onClick,
-  onDelete,
-  isSelected,
-  isPublicised,
+	title,
+	price,
+	quantity,
+	imageSource,
+	className,
+	isClickable,
+	onClick,
+	onDelete,
+	isSelected,
+	isPublicised,
 }) {
-  return (
-    <BasketCardStyled className={className} isClickable={isClickable} onClick={onClick} isSelected={isSelected}>
-      <div className="delete-button" onClick={onDelete}>
-        <MdDeleteForever className="icon" />
-      </div>
-      <div className="image">
-        <img src={imageSource} alt={title} />
-        {isPublicised && <Sticker className="badge-new" />}
-      </div>
-      <div className="text-info">
-        <div className="left-info">
-          <div className="title">
-            <span>{title}</span>
-          </div>
-          <span className="price">{price}</span>
-        </div>
-        <div className="quantity">
-          <CasinoEffect count={`x ${quantity}`} />
-        </div>
-      </div>
-    </BasketCardStyled>
-  )
+	return (
+		<BasketCardStyled
+			className={className}
+			isClickable={isClickable}
+			onClick={onClick}
+			isSelected={isSelected}
+		>
+			<div className="delete-button" onClick={onDelete}>
+				<MdDeleteForever className="icon" />
+			</div>
+			<div className="image">
+				<img src={imageSource} alt={title} />
+				{isPublicised && <Sticker className="badge-new" />}
+			</div>
+			<div className="text-info">
+				<div className="left-info">
+					<div className="title">
+						<span>{title}</span>
+					</div>
+					<span className="price">{price}</span>
+				</div>
+				<div className="quantity">
+					<CasinoEffect count={`x ${quantity}`} />
+				</div>
+			</div>
+		</BasketCardStyled>
+	);
 }
 
 const BasketCardStyled = styled.div`
@@ -170,8 +175,9 @@ const BasketCardStyled = styled.div`
     }
   }
 
-  ${({ isClickable, isSelected }) => isClickable && isSelected && selectedStyled}
-`
+  ${({ isClickable, isSelected }) =>
+		isClickable && isSelected && selectedStyled}
+`;
 
 const selectedStyled = css`
   background: ${theme.colors.primary};
@@ -179,4 +185,4 @@ const selectedStyled = css`
   .quantity {
     color: ${theme.colors.white};
   }
-`
+`;

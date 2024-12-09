@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { theme } from "../../theme";
+import { theme } from "../../theme/theme";
 import Button from "./Button";
 import { TiDelete } from "react-icons/ti";
 import { fadeInFromRight, fadeInFromTop } from "../../theme/animations";
@@ -85,7 +85,7 @@ const Card = ({
 
 export default Card;
 
-type CardStyledProps = { isHoverable: boolean, isSelected: boolean }
+type CardStyledProps = { isHoverable: boolean; isSelected: boolean };
 
 const CardStyled = styled.div<CardStyledProps>`
   ${({ isHoverable }) => isHoverable && hoverableStyle}

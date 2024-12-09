@@ -1,39 +1,38 @@
 import React, { ComponentProps } from "react";
 import styled from "styled-components";
-import { theme } from "../../theme";
-
+import { theme } from "../../theme/theme";
 
 type Option = {
-  optionValue?: string | number | readonly string[]; 
-  label: string; 
-}
+	optionValue?: string | number | readonly string[];
+	label: string;
+};
 
 type SelectInputProps = {
-  options: Option[]; 
-  Icon: JSX.Element; 
-} & ComponentProps<"select">
+	options: Option[];
+	Icon: JSX.Element;
+} & ComponentProps<"select">;
 
 const SelectInput = ({
-  options,
-  value,
-  name,
-  Icon,
-  className,
-  onChange,
-  ...restProps
+	options,
+	value,
+	name,
+	Icon,
+	className,
+	onChange,
+	...restProps
 }: SelectInputProps) => {
-  return (
-    <SelectInputStyled className={className}>
-      {Icon && <div className="icon">{Icon}</div>}
-      <select name={name} value={value} onChange={onChange} {...restProps}>
-        {options.map(({ optionValue, label }) => (
-          <option key={label} value={optionValue}>
-            {label}
-          </option>
-        ))}
-      </select>
-    </SelectInputStyled>
-  );
+	return (
+		<SelectInputStyled className={className}>
+			{Icon && <div className="icon">{Icon}</div>}
+			<select name={name} value={value} onChange={onChange} {...restProps}>
+				{options.map(({ optionValue, label }) => (
+					<option key={label} value={optionValue}>
+						{label}
+					</option>
+				))}
+			</select>
+		</SelectInputStyled>
+	);
 };
 
 const SelectInputStyled = styled.div`
