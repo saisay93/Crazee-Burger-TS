@@ -1,7 +1,7 @@
 import { doc, getDoc, setDoc } from "firebase/firestore"
 import { db } from "./firebase-config"
 
-export const syncBothMenus = (userId, menuUpdated) => {
+export const syncBothMenus = <T>(userId: string, menuUpdated: T[]) => {
   const cachette = doc(db, "users", userId)
 
   const nourriture = {
@@ -11,7 +11,7 @@ export const syncBothMenus = (userId, menuUpdated) => {
   setDoc(cachette, nourriture)
 }
 
-export const getMenu = async (idUser) => {
+export const getMenu = async (idUser: string) => {
   //const docRef = doc(CHEMIN)
   const docRef = doc(db, "users", idUser)
 

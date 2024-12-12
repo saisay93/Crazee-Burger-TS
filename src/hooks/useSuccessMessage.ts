@@ -12,5 +12,5 @@ export const useSuccessMessage = (timeDelay = 2000) => {
     }, timeDelay)
   }
 
-  return { isSubmitted, displaySuccessMessage }
+  return { isSubmitted, displaySuccessMessage}
 }
