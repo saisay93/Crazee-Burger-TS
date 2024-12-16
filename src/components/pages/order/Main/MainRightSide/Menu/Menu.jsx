@@ -11,7 +11,7 @@ import {
 	EMPTY_PRODUCT,
 	IMAGE_COMING_SOON,
 	IMAGE_NO_STOCK,
-} from "../../../../../../enums/product";
+} from "../../../../../../constants/product";
 import { isEmpty } from "../../../../../../utils/array";
 import Loader from "./Loader";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
