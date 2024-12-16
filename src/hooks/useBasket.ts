@@ -6,7 +6,7 @@ import {
 	removeObjectById,
 } from "../utils/array";
 import { setLocalStorage } from "../utils/window";
-import { BasketProductQuantity } from "../Types/MenuProduct";
+import { BasketProductQuantity } from "../Types/Product";
 
 export const useBasket = () => {
 	const [basket, setBasket] = useState<BasketProductQuantity[]>([]);
