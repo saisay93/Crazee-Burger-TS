@@ -4,10 +4,13 @@ import { ThemeProvider } from "styled-components"
 import { theme } from "./theme/theme"
 import { RouterProvider } from "react-router-dom"
 import { router } from "./routers/router"
+import { OrderContextProvider } from "./context/OrderContext"
 
 createRoot(document.getElementById("root")).render(
   <ThemeProvider theme={theme}>
-    <RouterProvider router={router} />
+    <OrderContextProvider>
+      <RouterProvider router={router} />  
+    </OrderContextProvider>
   </ThemeProvider>
 )
 
