@@ -1,4 +1,4 @@
-import { createContext, useEffect, useRef, useState } from "react"
+import { createContext, useContext, useEffect, useRef, useState } from "react"
 import { findObjectById } from "../utils/array";
 import {useMenu} from "../hooks/useMenu"
 import {useBasket} from "../hooks/useBasket"
@@ -7,6 +7,7 @@ import { EMPTY_PRODUCT } from "../constants/product";
 import { initialiseUserSession } from "../components/pages/order/helpers/initialiseUserSession";
 
 // 1. Creation du context
+
  const OrderContext = createContext({
   username: "",
   isModeAdmin: false,
@@ -37,9 +38,6 @@ import { initialiseUserSession } from "../components/pages/order/helpers/initial
   handleAddToBasket: () => {},
   handleDeleteBasketProduct: () => {},
 })
-
-export default OrderContext
-
 
 // 2. Installation du context
 
@@ -104,3 +102,4 @@ export const OrderContextProvider = ({children}) => {
 
 // 3. Consommation du context
 
+export const useOrderContext = () => useContext(OrderContext)

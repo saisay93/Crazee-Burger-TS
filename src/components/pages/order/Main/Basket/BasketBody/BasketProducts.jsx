@@ -1,19 +1,17 @@
 import React from "react";
-import { useContext } from "react";
 import styled from "styled-components";
 import {
 	BASKET_MESSAGE,
 	IMAGE_COMING_SOON,
 } from "../../../../../../constants/product";
 import BasketCard from "./BasketCard";
-import OrderContext from "../../../../../../context/OrderContext";
+import { useOrderContext } from "../../../../../../context/OrderContext";
 import { findObjectById } from "../../../../../../utils/array";
 import { checkIfProductIsClicked } from "../../MainRightSide/Menu/helper";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { basketAnimation } from "../../../../../../theme/animations";
 import { formatPrice } from "../../../../../../utils/maths";
 import { convertStringToBoolean } from "../../../../../../utils/string";
-import Sticker from "../../../../../reusable-ui/Sticker";
 
 export default function BasketProducts() {
 	const {
@@ -24,7 +22,7 @@ export default function BasketProducts() {
 		menu,
 		handleProductSelected,
 		productSelected,
-	} = useContext(OrderContext);
+	} = useOrderContext();
 
 	const handleOnDelete = (event, id) => {
 		event.stopPropagation();

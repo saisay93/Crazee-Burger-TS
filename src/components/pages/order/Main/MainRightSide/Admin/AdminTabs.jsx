@@ -2,8 +2,7 @@ import styled from "styled-components";
 import Tab from "../../../../../reusable-ui/Tab";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { theme } from "../../../../../../theme/theme";
-import { useContext } from "react";
-import OrderContext from "../../../../../../context/OrderContext";
+import { useOrderContext } from "../../../../../../context/OrderContext";
 import { getTabsConfig } from "./tabsConfig";
 
 export default function AdminTabs() {
@@ -13,7 +12,7 @@ export default function AdminTabs() {
 		setIsCollapsed,
 		currentTabSelected,
 		setCurrentTabSelected,
-	} = useContext(OrderContext);
+	} = useOrderContext();
 
 	// comportements
 	const selectTab = (tabSelected) => {

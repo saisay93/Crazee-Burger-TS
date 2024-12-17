@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import OrderContext from "../../../../../../../../context/OrderContext";
+import { useOrderContext } from "../../../../../../../../context/OrderContext";
 import { EMPTY_PRODUCT } from "../../../../../../../../constants/product";
 import { useSuccessMessage } from "../../../../../../../../hooks/useSuccessMessage";
 import { replaceFrenchCommaWithDot } from "../../../../../../../../utils/maths";
@@ -9,7 +8,7 @@ import SubmitButton from "./SubmitButton";
 export default function AddForm() {
 	// state
 	const { username, handleAdd, newProduct, setNewProduct } =
-		useContext(OrderContext);
+		useOrderContext();
 	const { isSubmitted, displaySuccessMessage } = useSuccessMessage();
 
 	// comportements
