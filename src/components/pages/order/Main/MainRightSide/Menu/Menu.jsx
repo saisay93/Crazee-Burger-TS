@@ -1,6 +1,5 @@
-import { useContext } from "react";
 import styled from "styled-components";
-import OrderContext from "../../../../../../context/OrderContext";
+import { useOrderContext } from "../../../../../../context/OrderContext";
 import { theme } from "../../../../../../theme/theme";
 import { formatPrice } from "../../../../../../utils/maths";
 import Card from "../../../../../reusable-ui/Card";
@@ -31,7 +30,7 @@ export default function Menu() {
 		handleAddToBasket,
 		handleDeleteBasketProduct,
 		handleProductSelected,
-	} = useContext(OrderContext);
+	} = useOrderContext();
 	// state
 
 	// comportements (gestionnaires d'événement ou "event handlers")

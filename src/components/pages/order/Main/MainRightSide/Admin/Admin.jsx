@@ -1,13 +1,12 @@
-import React, { useContext } from "react";
 import styled from "styled-components";
-import OrderContext from "../../../../../../context/OrderContext";
+import { useOrderContext } from "../../../../../../context/OrderContext";
 import AdminPanel from "./AdminPanel/AdminPanel";
 import AdminTabs from "./AdminTabs";
 import { fadeInFromBottom } from "../../../../../../theme/animations";
 import { theme } from "../../../../../../theme/theme";
 
 export default function Admin() {
-	const { isCollapsed } = useContext(OrderContext);
+	const { isCollapsed } = useOrderContext();
 
 	return (
 		<AdminStyled>
