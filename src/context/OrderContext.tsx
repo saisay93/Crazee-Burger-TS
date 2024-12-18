@@ -33,7 +33,7 @@ handleProductSelected: (idProductClicked: string) => Promise<void>,
 
 // 1. Creation du context
 
- const OrderContext = createContext<OrderContextType | null>(null)
+ const OrderContext = createContext<OrderContextType | undefined>(undefined)
 
 // 2. Installation du context
 
@@ -96,4 +96,8 @@ export const OrderContextProvider = ({children}: PropsWithChildren) => {
 
 // 3. Consommation du context
 
-export const useOrderContext = () => useContext(OrderContext)
+export const useOrderContext = () => {
+	const orderContextData = useContext(OrderContext)
+	if (orderContextData === undefined) throw new Error("useOrderContext() can only be used within OrderContextProvider")
+	return orderContextData
+}
