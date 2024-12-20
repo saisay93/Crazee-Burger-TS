@@ -17,10 +17,13 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { menuAnimation } from "../../../../../../theme/animations";
 import { convertStringToBoolean } from "../../../../../../utils/string";
 import RibbonAnimated, { ribbonAnimation } from "./RibbonAnimated";
+import { useParams } from "react-router-dom";
+
 
 export default function Menu() {
+	const {username} = useParams();
+	
 	const {
-		username,
 		menu,
 		isModeAdmin,
 		handleDelete,
@@ -34,20 +37,22 @@ export default function Menu() {
 	// state
 
 	// comportements (gestionnaires d'événement ou "event handlers")
-	const handleCardDelete = (event, idProductToDelete) => {
+	const handleCardDelete = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, idProductToDelete: string) => {
 		event.stopPropagation();
-		handleDelete(idProductToDelete, username);
-		handleDeleteBasketProduct(idProductToDelete, username);
+		if (username) {
+			handleDelete(idProductToDelete, username);
+			handleDeleteBasketProduct(idProductToDelete, username);
+		}
 		idProductToDelete === productSelected.id &&
 			setProductSelected(EMPTY_PRODUCT);
 	};
 
-	const handleAddButton = (event, idProductToAdd) => {
+	const handleAddButton = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, idProductToAdd: string) => {
 		event.stopPropagation();
-		handleAddToBasket(idProductToAdd, username);
+		if (username) handleAddToBasket(idProductToAdd, username);
 	};
 
-	let cardContainerClassName = isModeAdmin
+	const cardContainerClassName = isModeAdmin
 		? "card-container is-hoverable"
 		: "card-container";
 
@@ -55,8 +60,8 @@ export default function Menu() {
 	if (menu === undefined) return <Loader />;
 
 	if (isEmpty(menu)) {
-		if (!isModeAdmin) return <EmptyMenuClient />;
-		return <EmptyMenuAdmin onReset={() => resetMenu(username)} />;
+		if (!isModeAdmin) return <EmptyMenuClient />; 
+		if (username) return <EmptyMenuAdmin onReset={() => resetMenu(username)} />;
 	}
 
 	return (
@@ -73,7 +78,7 @@ export default function Menu() {
 									leftDescription={formatPrice(price)}
 									hasDeleteButton={isModeAdmin}
 									onDelete={(event) => handleCardDelete(event, id)}
-									onClick={isModeAdmin ? () => handleProductSelected(id) : null}
+									onClick={isModeAdmin ? () => handleProductSelected(id) : undefined}
 									isHoverable={isModeAdmin}
 									isSelected={checkIfProductIsClicked(id, productSelected.id)}
 									onAdd={(event) => handleAddButton(event, id)}
