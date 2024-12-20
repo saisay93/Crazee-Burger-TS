@@ -9,8 +9,8 @@ type CardProps = {
 	imageSource?: string;
 	leftDescription: string;
 	hasDeleteButton?: boolean;
-	onDelete?: React.MouseEventHandler<HTMLButtonElement>;
-	onClick: React.MouseEventHandler<HTMLDivElement>;
+	onDelete?: React.MouseEventHandler<HTMLButtonElement> | undefined;
+	onClick: React.MouseEventHandler<HTMLDivElement> | undefined;
 	isHoverable: boolean;
 	isSelected: boolean;
 	onAdd?: React.MouseEventHandler<HTMLButtonElement>;
